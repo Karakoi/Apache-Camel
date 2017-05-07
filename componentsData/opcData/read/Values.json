@@ -1,0 +1,6 @@
+    {
+      "Bucket Brigade.Int1": ["write", "1"],    
+      "Bucket Brigade.Int2": ["write", "10"],    
+      "Saw-toothed Waves.Int1": ["read", ""],   
+      "Saw-toothed Waves.Int2": ["read", ""]   
+    }
