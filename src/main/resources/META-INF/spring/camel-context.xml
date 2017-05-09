@@ -42,15 +42,17 @@
         <!--<route> <from uri="file:E://Документи/Git - repositories/Camel/componentsData/opcData/write?fileName=opcData.txt"></from> -->
         <!--<process ref="excelProcessor"></process> <to uri="component.excel://component.excel"></to> </route> -->
 
-        <!--<route>-->
-        <!--<from uri="erlang://erlang?operation=factorial&amp;dataForCalculation=4"/>-->
-        <!--<to uri="file:E://Документи/Git - repositories/Apache-Camel/componentsData/erlang/read?fileName=read.txt"/>-->
-        <!--</route>-->
-
+        <!--READ FROM ERLANG AND WRITE TO HEROKU -->
         <route>
-            <from uri="erlang://erlang?operation=factorial&amp;dataForCalculation=6"/>
+            <from uri="erlang://erlang?operation=factorial&amp;dataForCalculation=11"/>
             <process ref="numberProcessor"/>
-            <to uri="heroku://heroku?newItemName=Item 10"/>
+            <to uri="heroku://heroku?newItemName=Item 102"/>
+        </route>
+
+        <!--READ FROM HEROKU AND WRITE TO FILE -->
+        <route>
+            <from uri="heroku://heroku?itemName=Item 101"/>
+            <to uri="file:E://Документи/Git - repositories/Apache-Camel/componentsData/heroku/read?fileName=read.txt"/>
         </route>
 
         <!--READ FROM OPC AND WRITE TO OPC -->

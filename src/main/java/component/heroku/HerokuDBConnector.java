@@ -4,8 +4,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
 import java.sql.*;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
+import java.time.LocalDate;
 
 @Slf4j
 @RequiredArgsConstructor
@@ -37,22 +36,22 @@ public class HerokuDBConnector {
         }
     }
 
-    public int readItemByName(String itemName) {
+    public String readItemByName(String itemName) {
         PreparedStatement ps;
         ResultSet rs;
         try {
-            String sql = "SELECT item_value,date_of_creation FROM erlang_data WHERE item_name =" + itemName + ";";
+            String sql = "SELECT item_value,date_of_creation FROM erlang_data WHERE item_name ='" + itemName + "';";
             ps = connect().prepareStatement(sql);
             rs = ps.executeQuery();
             rs.next();
-            return rs.getInt("item_value");
+            return rs.getString("item_value");
 
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
             disConnect();
         }
-        return 0;
+        return null;
     }
 
     public void writeNewItem(String itemName, int itemValue) {
@@ -60,13 +59,8 @@ public class HerokuDBConnector {
         try {
             String sql = "INSERT INTO erlang_data(item_name,date_of_creation, item_value) VALUES(?, ?, ?);";
             ps = connect().prepareStatement(sql);
-
             ps.setString(1, itemName);
-
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-            LocalDateTime now = LocalDateTime.now();
-            ps.setString(2, formatter.format(now));
-
+            ps.setTimestamp(2, new Timestamp(System.currentTimeMillis()));
             ps.setInt(3, itemValue);
             ps.executeUpdate();
         } catch (SQLException e1) {
@@ -99,6 +93,12 @@ public class HerokuDBConnector {
 //                    "6bd88d5e0e8afdf4d428d8e868a859efcf02b6e98b101fbff356a37cb5c9ea03");
 //
 //            System.out.println("OK!");
+//
+//            new HerokuDBConnector("jdbc:postgresql://ec2-54-247-99-159.eu-west-1.compute.amazonaws.com:5432/dfrccd9sohrr9l?ssl=true&sslfactory=org.postgresql.ssl.NonValidatingFactory",
+//                    "xcovmuduhgfobf",
+//                    "6bd88d5e0e8afdf4d428d8e868a859efcf02b6e98b101fbff356a37cb5c9ea03")
+//                    .writeNewItem("Item 999", 999);
+//
 //            Statement stmt = connection.createStatement();
 //            ResultSet rs = stmt.executeQuery("SELECT id, item_name FROM erlang_data");
 //            int id;
@@ -108,6 +108,11 @@ public class HerokuDBConnector {
 //                name = rs.getString("item_name");
 //                System.out.println("id: " + id + " ,name: " + name);
 //            }
+//
+////            System.out.println("RESULT: " + new HerokuDBConnector("jdbc:postgresql://ec2-54-247-99-159.eu-west-1.compute.amazonaws.com:5432/dfrccd9sohrr9l?ssl=true&sslfactory=org.postgresql.ssl.NonValidatingFactory",
+////                    "xcovmuduhgfobf",
+////                    "6bd88d5e0e8afdf4d428d8e868a859efcf02b6e98b101fbff356a37cb5c9ea03")
+////                    .readItemByName("Item 4"));
 //
 //
 //        } catch (SQLException e) {

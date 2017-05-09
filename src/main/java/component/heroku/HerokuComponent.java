@@ -21,7 +21,7 @@ public class HerokuComponent extends DefaultComponent {
 
     @Override
     protected Endpoint createEndpoint(String uri, String remaining, Map<String, Object> parameters) throws Exception {
-       Endpoint endpoint = new HerokuEndpoint(uri, this);
+//       Endpoint endpoint = new HerokuEndpoint(uri, this);
 //         endpoint = new HerokuEndpoint(uri, this);
         setProperties(endpoint, parameters);
         return endpoint;

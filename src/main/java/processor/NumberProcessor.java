@@ -7,6 +7,6 @@ import utils.NumberParser;
 public class NumberProcessor implements Processor {
 
     public void process(Exchange exchange) throws Exception {
-        exchange.getIn().setBody(new NumberParser().findNumber((String) exchange.getIn().getBody()));
+        exchange.getIn().setBody(new NumberParser().findNumberAsInteger((String) exchange.getIn().getBody()));
     }
 }

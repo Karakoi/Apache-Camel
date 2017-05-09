@@ -12,8 +12,8 @@
         <!--<property name="url" value=""/>-->
         <property name="user" value="xcovmuduhgfobf"/>
         <property name="password" value="6bd88d5e0e8afdf4d428d8e868a859efcf02b6e98b101fbff356a37cb5c9ea03"/>
-        <property name="itemName" value=""/>
-        <property name="newItemName" value=""/>
+        <property name="itemName" value="Item 2"/>
+        <property name="newItemName" value="Item 20"/>
     </bean>
 
 </beans>

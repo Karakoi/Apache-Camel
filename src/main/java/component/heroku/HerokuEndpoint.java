@@ -27,9 +27,6 @@ public class HerokuEndpoint extends DefaultEndpoint {
     @UriParam
     private String newItemName;
 
-//    @UriParam
-//    private int itemValue;
-
     public HerokuEndpoint() {
         super();
     }

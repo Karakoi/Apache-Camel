@@ -3,6 +3,7 @@ package component.heroku;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.camel.Exchange;
 import org.apache.camel.impl.DefaultProducer;
+import utils.NumberParser;
 
 @Slf4j
 public class HerokuProducer extends DefaultProducer {
@@ -13,18 +14,18 @@ public class HerokuProducer extends DefaultProducer {
     public HerokuProducer(HerokuEndpoint endpoint) {
         super(endpoint);
         this.endpoint = endpoint;
+        herokuDBConnector = new HerokuDBConnector(endpoint.getUrl(), endpoint.getUser(), endpoint.getPassword());
     }
 
     @Override
     protected void doStart() throws Exception {
         super.doStart();
-        herokuDBConnector = new HerokuDBConnector(endpoint.getUrl(), endpoint.getUser(), endpoint.getPassword());
     }
 
     @Override
     public void process(Exchange exchange) throws Exception {
-        log.debug("Exchange: {}", exchange.getIn().getBody(String.class));
-        herokuDBConnector.writeNewItem(endpoint.getNewItemName(), exchange.getIn().getBody(Integer.class));
+        herokuDBConnector.writeNewItem(endpoint.getNewItemName(),
+                new NumberParser().findNumberAsInteger(exchange.getIn().getBody(String.class)));
     }
 
 }

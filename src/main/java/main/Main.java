@@ -5,27 +5,26 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
+import org.apache.camel.CamelContext;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-public class Main extends Application {
+public class Main {
 
 	public static void main(String[] args) throws Exception {
-		launch(args);
+		ApplicationContext springContext = new ClassPathXmlApplicationContext("./META-INF/spring/camel-context.xml");
+		CamelContext camelContext = (CamelContext) springContext.getBean("camelContext");
+//		CamelContext camelContext2 = (CamelContext) springContext.getBean("camelContext2");
 
-	}
-
-	@Override
-	public void start(Stage primaryStage) throws Exception {
-
-		// init();
 		try {
-			BorderPane root = (BorderPane) FXMLLoader.load(getClass().getClassLoader().getResource("Sample.fxml"));
-			Scene scene = new Scene(root, 800, 500);
-			// scene.getStylesheets().add(getClass().getResource("styles/styles.css").toExternalForm());
-			primaryStage.setScene(scene);
-			primaryStage.show();
+			camelContext.start();
+			Thread.sleep(20000);
+//			camelContext2.start();
+			camelContext.stop();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
+
 
 }

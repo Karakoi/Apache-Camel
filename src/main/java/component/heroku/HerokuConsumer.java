@@ -12,12 +12,12 @@ public class HerokuConsumer extends DefaultConsumer {
     public HerokuConsumer(HerokuEndpoint endpoint, Processor processor) {
         super(endpoint, processor);
         this.endpoint = endpoint;
+        herokuDBConnector = new HerokuDBConnector(endpoint.getUrl(), endpoint.getUser(), endpoint.getPassword());
     }
 
     @Override
     protected void doStart() throws Exception {
         super.doStart();
-        herokuDBConnector = new HerokuDBConnector(endpoint.getUrl(), endpoint.getUser(), endpoint.getPassword());
         Exchange exchange = endpoint.createExchange();
         exchange.getIn().setBody(herokuDBConnector.readItemByName(endpoint.getItemName()));
         getProcessor().process(exchange);

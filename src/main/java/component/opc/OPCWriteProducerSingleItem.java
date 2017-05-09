@@ -66,7 +66,7 @@ public class OPCWriteProducerSingleItem extends DefaultProducer {
 					// Парсер для того, щоб передати чисте число, без []
 					NumberParser pars = new NumberParser();
 					opcWrite.doWrite(endpoint.getItemForWrite(),
-							pars.findNumber(exchange.getIn().getBody(String.class)), endpoint.getConnTimeDelay());
+							pars.findNumberAsString(exchange.getIn().getBody(String.class)), endpoint.getConnTimeDelay());
 					// ITS WORKS // Integer num = new Integer(new
 					// Random().nextInt(20));
 					// System.out.println("ЧИСЛОООО " + num.toString()); //

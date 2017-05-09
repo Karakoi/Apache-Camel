@@ -103,31 +103,7 @@ public class Erlang {
         return response;
     }
 
-    /**
-     * @param answer string value from erlang process.
-     * @return collection of double values.
-     */
-    public List<Double> getListDoubleValueFromAnswer(String answer) {
-        String str = answer.replaceAll("[^-?0-9]+", " ");
-        String[] strings = str.trim().split(" ");
-        System.out.println(Arrays.toString(strings));
-        List<Double> collection = new ArrayList<>();
-        for (int i = 0; i < strings.length; i++) {
-            collection.set(i, Double.valueOf(strings[i]));
-        }
-        return collection;
-    }
 
-    /**
-     * @param answer string value from erlang process.
-     * @return double value.
-     */
-    public Double getDoubleValueFromAnswer(String answer) {
-        String str = answer.replaceAll("[^-?0-9]+", " ");
-        String[] strings = str.trim().split(" ");
-        System.out.println(Arrays.toString(strings));
-        return Double.valueOf(strings[0]);
-    }
 
     public String writeAndReadData(String operationName, String data) throws IOException {
         connect();
