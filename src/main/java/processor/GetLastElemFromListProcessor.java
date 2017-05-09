@@ -9,7 +9,7 @@ public class GetLastElemFromListProcessor implements Processor {
 
 	@Override
 	public void process(Exchange exchange) throws Exception {
-		ArrayList<Object> list = exchange.getIn().getBody(ArrayList.class);
+		ArrayList list = exchange.getIn().getBody(ArrayList.class);
 		exchange.getIn().setBody(list.get(list.size() - 1));
 	}
 

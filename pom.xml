@@ -69,7 +69,6 @@
 			<groupId>postgresql</groupId>
 			<artifactId>postgresql</artifactId>
 			<version>9.4.1208-jdbc42-atlassian-hosted</version>
-			<!--<version>9.3-1102.jdbc41</version>-->
 		</dependency>
 
 

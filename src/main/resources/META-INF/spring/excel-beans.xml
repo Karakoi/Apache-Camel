@@ -4,7 +4,7 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
 	<bean id="excel" class="component.excel.ExcelComponent" scope="prototype">
-		<constructor-arg ref="excelEndpoint"></constructor-arg>
+		<constructor-arg ref="excelEndpoint"/>
 	</bean>
 
 	<bean id="excelEndpoint" class="component.excel.ExcelEndpoint" scope="prototype">
@@ -12,11 +12,11 @@
 	-->
 	<!--  	<property name="fileNameTo" value="E://Документи/Eclipse for Java EE Projects/Camel/componentsData/excelData/write/dataFromOPC.xlsx"></property>
 		-->
-		<property name="sheetNo" value="0"></property>
-		<property name="rowNo" value="0"></property>
-		<property name="cellNo" value="0"></property>
+		<property name="sheetNo" value="0"/>
+		<property name="rowNo" value="0"/>
+		<property name="cellNo" value="0"/>
 	</bean>
 
-	<bean id="excelProcessor" class="component.excel.ExcelProcessor"></bean>
+	<bean id="excelProcessor" class="component.excel.ExcelProcessor"/>
 
 </beans>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="heroku" class="component.heroku.HerokuComponent" scope="prototype">
+        <constructor-arg ref="herokuEndpoint"/>
+    </bean>
+
+    <bean id="herokuEndpoint" class="component.heroku.HerokuEndpoint" scope="prototype">
+        <property name="url" value="jdbc:postgresql://ec2-54-247-99-159.eu-west-1.compute.amazonaws.com:5432/dfrccd9sohrr9l?ssl=true&amp;sslfactory=org.postgresql.ssl.NonValidatingFactory"/>
+        <!--<property name="url" value=""/>-->
+        <property name="user" value="xcovmuduhgfobf"/>
+        <property name="password" value="6bd88d5e0e8afdf4d428d8e868a859efcf02b6e98b101fbff356a37cb5c9ea03"/>
+        <property name="itemName" value=""/>
+        <property name="newItemName" value=""/>
+    </bean>
+
+</beans>

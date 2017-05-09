@@ -1,9 +1,9 @@
-package processor;
+package utils;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class MyParser {
+public class NumberParser {
 
 	public String findNumber(String str) {
 

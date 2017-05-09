@@ -8,7 +8,7 @@ import org.openscada.opc.lib.common.NotConnectedException;
 import org.openscada.opc.lib.da.AddFailedException;
 import org.openscada.opc.lib.da.DuplicateGroupException;
 import org.openscada.opc.lib.da.UnknownGroupException;
-import processor.MyParser;
+import utils.NumberParser;
 
 import java.net.UnknownHostException;
 import java.util.concurrent.Executors;
@@ -64,7 +64,7 @@ public class OPCWriteProducerSingleItem extends DefaultProducer {
 			public void run() {
 				try {
 					// Парсер для того, щоб передати чисте число, без []
-					MyParser pars = new MyParser();
+					NumberParser pars = new NumberParser();
 					opcWrite.doWrite(endpoint.getItemForWrite(),
 							pars.findNumber(exchange.getIn().getBody(String.class)), endpoint.getConnTimeDelay());
 					// ITS WORKS // Integer num = new Integer(new
