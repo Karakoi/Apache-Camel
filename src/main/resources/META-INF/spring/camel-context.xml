@@ -40,8 +40,8 @@
 			<!--<process ref="excelProcessor"></process> <to uri="component.excel://component.excel"></to> </route> -->
 
 		<route>
-			<from uri="erlang://erlang?operation=factorial" ></from>
-			<to uri="file:E://Документи/Git - repositories/Camel/componentsData/erlang/read?fileName=read.txt"></to>
+			<from uri="erlang://erlang?operation=factorial"/>
+			<to uri="file:E://Документи/Git - repositories/Apache-Camel/componentsData/erlang/read?fileName=read.txt"/>
 		</route>
 
 		<!--READ FROM OPC AND WRITE TO OPC -->

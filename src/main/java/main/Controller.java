@@ -13,48 +13,41 @@ import java.util.ResourceBundle;
 
 public class Controller implements Initializable {
 
-	@FXML
-	private Button connectButton;
+    @FXML
+    private Button connectButton;
 
-	@FXML
-	private Button disConnectButton;
+    @FXML
+    private Button disConnectButton;
 
-	public static ApplicationContext springContext;
-	public static CamelContext camelContext;
-	public static CamelContext camelContext2;
+    public static ApplicationContext springContext;
+    public static CamelContext camelContext;
+    public static CamelContext camelContext2;
 
-	@Override
-	public void initialize(URL arg0, ResourceBundle arg1) {
-		springContext = new ClassPathXmlApplicationContext("./META-INF/spring/camel-context.xml");
-		camelContext = (CamelContext) springContext.getBean("camelContext");
-		camelContext2 = (CamelContext) springContext.getBean("camelContext2");
+    @Override
+    public void initialize(URL arg0, ResourceBundle arg1) {
+        springContext = new ClassPathXmlApplicationContext("./META-INF/spring/camel-context.xml");
+        camelContext = (CamelContext) springContext.getBean("camelContext");
+        camelContext2 = (CamelContext) springContext.getBean("camelContext2");
 
-		try {
-			camelContext.stop();
-			camelContext2.stop();
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
+        try {
+            camelContext.stop();
+            camelContext2.stop();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
-	// public CamelContext init() {
-	// springContext = new
-	// ClassPathXmlApplicationContext("./META-INF/spring/camel-context.xml");
-	// camelContext = (CamelContext) springContext.getBean("camelContext");
-	// return camelContext;
-	// }
 
-	@FXML
-	public void connect(ActionEvent actionEvent) throws Exception {
-		camelContext.start();
+    @FXML
+    public void connect(ActionEvent actionEvent) throws Exception {
+        camelContext.start();
 //		camelContext2.start();
-	}
+    }
 
-	@FXML
-	public void disconnect(ActionEvent actionEvent) throws Exception {
-		camelContext.stop();
+    @FXML
+    public void disconnect(ActionEvent actionEvent) throws Exception {
+        camelContext.stop();
 //		camelContext2.stop();
-	}
+    }
 
 }
