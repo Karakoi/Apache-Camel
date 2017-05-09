@@ -1,6 +1,8 @@
 package component.erlang;
 
+import component.heroku.HerokuEndpoint;
 import lombok.Getter;
+import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import org.apache.camel.Endpoint;
 import org.apache.camel.impl.DefaultComponent;
@@ -9,13 +11,14 @@ import java.util.Map;
 
 @Getter
 @Setter
+@RequiredArgsConstructor
 public class ErlangComponent extends DefaultComponent {
 
-    private Endpoint endpoint;
+    private final Endpoint endpoint;
 
-    public ErlangComponent(Endpoint endpoint) {
-        this.endpoint = endpoint;
-    }
+//    public ErlangComponent(Endpoint endpoint) {
+//        this.endpoint = endpoint;
+//    }
 
     @Override
     protected Endpoint createEndpoint(String uri, String remaining, Map<String, Object> parameters) throws Exception {

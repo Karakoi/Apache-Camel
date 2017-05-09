@@ -44,9 +44,9 @@
 
         <!--READ FROM ERLANG AND WRITE TO HEROKU -->
         <route>
-            <from uri="erlang://erlang?operation=factorial&amp;dataForCalculation=11"/>
+            <from uri="erlang://erlang?operation=factorial&amp;dataForCalculation=12"/>
             <process ref="numberProcessor"/>
-            <to uri="heroku://heroku?newItemName=Item 102"/>
+            <to uri="heroku://heroku?newItemName=Item 104"/>
         </route>
 
         <!--READ FROM HEROKU AND WRITE TO FILE -->
