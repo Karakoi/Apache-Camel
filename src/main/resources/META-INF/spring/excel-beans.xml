@@ -3,20 +3,20 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-	<bean id="excel" class="component.excel.ExcelComponent" scope="prototype">
+	<bean id="excel" class="components.excel.ExcelComponent" scope="prototype">
 		<constructor-arg ref="excelEndpoint"/>
 	</bean>
 
-	<bean id="excelEndpoint" class="component.excel.ExcelEndpoint" scope="prototype">
+	<bean id="excelEndpoint" class="components.excel.ExcelEndpoint" scope="prototype">
 	<!--  	<property name="fileNameFrom" value="E://Документи/Eclipse for Java EE Projects/Camel/componentsData/excelData/read/Real4.xlsx"></property>
 	-->
-	<!--  	<property name="fileNameTo" value="E://Документи/Eclipse for Java EE Projects/Camel/componentsData/excelData/write/dataFromOPC.xlsx"></property>
-		-->
+		<!--<property name="fileNameTo" value=""/>-->
+
 		<property name="sheetNo" value="0"/>
 		<property name="rowNo" value="0"/>
 		<property name="cellNo" value="0"/>
 	</bean>
 
-	<bean id="excelProcessor" class="component.excel.ExcelProcessor"/>
+	<bean id="excelProcessor" class="components.excel.ExcelProcessor"/>
 
 </beans>

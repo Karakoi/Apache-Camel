@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="aws" class="components.aws.AWSComponent" scope="prototype">
+        <constructor-arg ref="awsEndpoint"/>
+    </bean>
+
+    <bean id="awsEndpoint" class="components.aws.AWSEndpoint" scope="prototype">
+        <property name="accessKey" value="AKIAJ44J2WC5TPTQB6BQ"/>
+        <property name="secretKey" value="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"/>
+        <property name="bucketName" value="camelbucket"/>
+        <property name="keyName" value="OPC_Item_2-Room_temperature"/>
+        <property name="operation" value="upload"/>
+    </bean>
+
+</beans>

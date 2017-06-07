@@ -3,11 +3,11 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-	<bean id="erlang" class="component.erlang.ErlangComponent" scope="prototype">
+	<bean id="erlang" class="components.erlang.ErlangComponent" scope="prototype">
 		<constructor-arg ref="erlangEndpoint"/>
 	</bean>
 
-	<bean id="erlangEndpoint" class="component.erlang.ErlangEndpoint" scope="prototype">
+	<bean id="erlangEndpoint" class="components.erlang.ErlangEndpoint" scope="prototype">
 		<property name="node" value="enode"/>
 		<property name="cookie" value="erlang"/>
 		<property name="operation" value="sqrt"/>

@@ -4,18 +4,18 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
 	<!--==================== opcTest ================================ -->
-	<bean id="opcTest" class="component.opc.TestComponent" scope="prototype">
+	<bean id="opcTest" class="components.opc.TestComponent" scope="prototype">
 	</bean>
 	
-	<!--==================== component.opc ================================ -->
+	<!--==================== components.opc ================================ -->
 	
 			
 	<!--==================== opcSingleItem 1 ================================ -->
-	<bean id="opcSingleItem" class="component.opc.OPCComponent" scope="prototype">
+	<bean id="opcSingleItem" class="components.opc.OPCComponent" scope="prototype">
 		<constructor-arg ref="opcEndpointSingleItem"/>
 	</bean>
 	
-	<bean id="opcEndpointSingleItem" class="component.opc.OPCEndpoint" scope="prototype">
+	<bean id="opcEndpointSingleItem" class="components.opc.OPCEndpoint" scope="prototype">
 	<!--  	<property name="producer" ref="opcWriteProducerSingleItem"></property> -->
 	<!--      <property name="consumer" ref="opcReadConsumerSingleItem"></property> -->
 		<property name="typeOfProd" value="single"/>
@@ -36,11 +36,11 @@
 		-->
 	     
      <!--==================== opcSingleItem 2 ================================ -->	
-	<bean id="opcSingleItem2" class="component.opc.OPCComponent" scope="prototype">
+	<bean id="opcSingleItem2" class="components.opc.OPCComponent" scope="prototype">
 		<constructor-arg ref="opcEndpointSingleItem2"/>
 	</bean>
 
-	<bean id="opcEndpointSingleItem2" class="component.opc.OPCEndpoint" scope="prototype">
+	<bean id="opcEndpointSingleItem2" class="components.opc.OPCEndpoint" scope="prototype">
 	<!--  	<property name="producer" ref="opcWriteProducerSingleItem2"></property> -->
 	<!--  	<property name="consumer" ref="opcReadConsumerSingleItem2"></property> -->
 		<property name="typeOfProd" value="single"/>
@@ -62,11 +62,11 @@
 	
 	<!--======================== opcFewItems ============================ -->
 	<!--================================================================= -->
-	<bean id="opcFewItems" class="component.opc.OPCComponent" scope="prototype">
+	<bean id="opcFewItems" class="components.opc.OPCComponent" scope="prototype">
 		<constructor-arg ref="opcEndpointFewItems"/>
 	</bean>
 
-	<bean id="opcEndpointFewItems" class="component.opc.OPCEndpoint" >
+	<bean id="opcEndpointFewItems" class="components.opc.OPCEndpoint" >
 	<!--  	<property name="producer" ref="opcWriteProducerFewItems"></property> -->
 		<property name="hostName" value="localhost"/>
 		<property name="userName" value="OPCUser2"/>
@@ -78,10 +78,10 @@
 		<constructor-arg ref="opcEndpointFewItems"></constructor-arg>
 	</bean>
 -->
-	<bean id="opcReadParserProcessor" class="processor.OPCReadParserProcessor"/>
-	<bean id="toJsonProcessor" class="processor.ToJsonProcessor"/>
-	<bean id="getLastElemProcessor" class="processor.GetLastElemFromListProcessor"/>
-	<bean id="fakeProcessor" class="processor.FakeProcessor"/>
+	<bean id="opcReadParserProcessor" class="processors.OPCReadParserProcessor"/>
+	<bean id="toJsonProcessor" class="processors.ToJsonProcessor"/>
+	<bean id="getLastElemProcessor" class="processors.GetLastElemFromListProcessor"/>
+	<bean id="fakeProcessor" class="processors.FakeProcessor"/>
 	
 	<!--====================================================-->
 

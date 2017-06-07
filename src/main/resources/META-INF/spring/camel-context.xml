@@ -7,6 +7,7 @@
        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
        http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd">
 
+    <import resource="aws-beans.xml"/>
     <import resource="heroku-beans.xml"/>
     <import resource="erlang-beans.xml"/>
     <import resource="excel-beans.xml"/>
@@ -20,88 +21,98 @@
 
         <!-- READ FROM FILE AND WRITE TO OPC -->
         <!-- <route> <from uri="file:E://Документи/Eclipse for Java EE Projects/Camel/componentsData/opcData/read?noop=true"
-            /> <process ref="toJsonProcessor"></process> <to uri="opcFewItems://component.opc?itemsForWrite=Bucket
+            /> <process ref="toJsonProcessor"></process> <to uri="opcFewItems://components.opc?itemsForWrite=Bucket
             Brigade.Int2;Bucket Brigade.Int1;" /> </route> -->
 
 
         <!--READ FROM OPC AND WRITE TO FILE -->
-        <!-- <route> <from uri="opcSingleItem://component.opc?itemForRead=Saw-toothed Waves.Int2"
-            /> <process ref="opcReadParserProcessor"></process> <to uri="component.excel://component.excel"></to>
+        <!-- <route> <from uri="opcSingleItem://components.opc?itemForRead=Saw-toothed Waves.Int2"
+            /> <process ref="opcReadParserProcessor"></process> <to uri="components.excel://components.excel"></to>
             <to uri="file:E://Документи/Eclipse for Java EE Projects/Camel/componentsData/opcData/write?fileName=opcData.txt"
             /> </route> -->
 
 
         <!--READ FROM EXCEL AND WRITE TO OPC -->
-        <!-- <route> <from uri="component.excel://eee?fileNameFrom=E://Документи/Eclipse
+        <!-- <route> <from uri="components.excel://eee?fileNameFrom=E://Документи/Eclipse
             for Java EE Projects/Camel/componentsData/excelData/read/Real8.xlsx" /> <process
-            ref="excelProcessor"></process> <to uri="opcSingleItem2://component.opc?itemForWrite=Bucket
+            ref="excelProcessor"></process> <to uri="opcSingleItem2://components.opc?itemForWrite=Bucket
             Brigade.Real8"></to> </route> -->
 
 
         <!--READ FROM FILE AND WRITE TO EXCEL -->
-        <!--<route> <from uri="file:E://Документи/Git - repositories/Camel/componentsData/opcData/write?fileName=opcData.txt"></from> -->
-        <!--<process ref="excelProcessor"></process> <to uri="component.excel://component.excel"></to> </route> -->
+        <!--<route>-->
+            <!--<from uri="file:E://Документи/Git - repositories/Apache-Camel/componentsData/opcData/write?fileName=opcData.txt"/>-->
+            <!--<process ref="excelProcessor"/>-->
+            <!--<to uri="excel://excel?fileNameTo=E://Документи/Git - repositories/Apache-Camel/test.xlsx"/>-->
+        <!--</route>-->
 
         <!--READ FROM ERLANG AND WRITE TO HEROKU -->
-        <route>
-            <from uri="erlang://erlang?operation=factorial&amp;dataForCalculation=12"/>
-            <process ref="numberProcessor"/>
-            <to uri="heroku://heroku?newItemName=Item 104"/>
-        </route>
+        <!--<route>-->
+            <!--<from uri="erlang://erlang?operation=factorial&amp;dataForCalculation=11"/>-->
+            <!--<process ref="numberProcessor"/>-->
+            <!--<to uri="heroku://heroku?newItemName=Item 104"/>-->
+        <!--</route>-->
 
         <!--READ FROM HEROKU AND WRITE TO FILE -->
-        <route>
-            <from uri="heroku://heroku?itemName=Item 101"/>
-            <to uri="file:E://Документи/Git - repositories/Apache-Camel/componentsData/heroku/read?fileName=read.txt"/>
-        </route>
+        <!--<route>-->
+            <!--<from uri="heroku://heroku?itemName=Item 102"/>-->
+            <!--<to uri="file:E://Документи/Git - repositories/Apache-Camel/componentsData/heroku/read?fileName=read.txt"/>-->
+        <!--</route>-->
 
         <!--READ FROM OPC AND WRITE TO OPC -->
-        <!--<route> <from uri="opcSingleItem://component.opc?itemForRead=Saw-toothed Waves.Int2" />-->
+        <!--<route> <from uri="opcSingleItem://components.opc?itemForRead=Saw-toothed Waves.Int2" />-->
         <!--<process ref="getLastElemProcessor"></process>-->
-        <!--<to uri="opcSingleItem://component.opc?itemForWrite=Bucket Brigade.Int2"></to>-->
+        <!--<to uri="opcSingleItem://components.opc?itemForWrite=Bucket Brigade.Int2"></to>-->
         <!--</route>-->
+
+        <!--READ FROM FILE AND WRITE TO AWS -->
+        <route>
+            <from uri="file:E://Документи/Git - repositories/Apache-Camel?fileName=test.txt"/>
+            <!--<from uri="erlang://erlang?operation=factorial&amp;dataForCalculation=11"/>-->
+            <to uri="aws://aws?operation=upload&amp;bucketName=camelbucket&amp;keyName=Report for some Period"/>
+        </route>
 
     </camelContext>
 
     <camelContext id="camelContext2" xmlns="http://camel.apache.org/schema/spring"
                   autoStartup="true">
         <!--  	<route>
-                <from uri="opcSingleItem://component.opc?itemForRead=Saw-toothed Waves.Int2" />
+                <from uri="opcSingleItem://components.opc?itemForRead=Saw-toothed Waves.Int2" />
                 <process ref="getLastElemProcessor"></process>
 
-                <to uri="opcSingleItem2://component.opc?itemForWrite=Bucket Brigade.Int2"></to>
+                <to uri="opcSingleItem2://components.opc?itemForWrite=Bucket Brigade.Int2"></to>
             </route> -->
 
         <!--  		<route>
                    <from
-                       uri="component.excel://ete?fileNameFrom=E://Документи/Eclipse for Java EE Projects/Camel/componentsData/excelData/read/Real4.xlsx" />
+                       uri="components.excel://ete?fileNameFrom=E://Документи/Eclipse for Java EE Projects/Camel/componentsData/excelData/read/Real4.xlsx" />
                    <process ref="excelProcessor"></process>
                    <multicast   >
-                       <to uri="opcSingleItem://component.opc?itemForWrite=Bucket Brigade.Real8"></to>
+                       <to uri="opcSingleItem://components.opc?itemForWrite=Bucket Brigade.Real8"></to>
 
-                       <to uri="opcSingleItem://component.opc?itemForWrite=Bucket Brigade.Real4"></to>
+                       <to uri="opcSingleItem://components.opc?itemForWrite=Bucket Brigade.Real4"></to>
                    </multicast>
 
                </route> -->
 
 
-        <!--  	 <route> <from uri="opcSingleItem://component.opc?itemForRead=Saw-toothed Waves.Int2"/>
+        <!--  	 <route> <from uri="opcSingleItem://components.opc?itemForRead=Saw-toothed Waves.Int2"/>
                 <multicast>
-                <to uri="opcSingleItem://component.opc?itemForWrite=Bucket Brigade.Int1"></to>
-                <to uri="opcSingleItem2://component.opc?itemForWrite=Bucket Brigade.Int2"></to>
+                <to uri="opcSingleItem://components.opc?itemForWrite=Bucket Brigade.Int1"></to>
+                <to uri="opcSingleItem2://components.opc?itemForWrite=Bucket Brigade.Int2"></to>
                 </multicast>
                 </route>  -->
 
 
         <!--<route>-->
-        <!--<from uri="opcSingleItem://component.opc?itemForRead=Saw-toothed Waves.Int2" />		-->
+        <!--<from uri="opcSingleItem://components.opc?itemForRead=Saw-toothed Waves.Int2" />		-->
         <!--<process ref="excelProcessor"></process> -->
         <!--<multicast>-->
-        <!--<to uri="component.excel://component.excel?fileNameTo=E://Документи/Eclipse for Java EE Projects/Camel/componentsData/excelData/write/dataFromOPC.xlsx"></to>-->
+        <!--<to uri="components.excel://components.excel?fileNameTo=E://Документи/Eclipse for Java EE Projects/Camel/componentsData/excelData/write/dataFromOPC.xlsx"></to>-->
         <!--<delay asyncDelayed="true">-->
         <!--<constant>1000</constant>-->
         <!--</delay>-->
-        <!--<to uri="component.excel://component.excel?fileNameTo=E://Документи/Eclipse for Java EE Projects/Camel/componentsData/excelData/write/dataFromOPC2.xlsx"></to>-->
+        <!--<to uri="components.excel://components.excel?fileNameTo=E://Документи/Eclipse for Java EE Projects/Camel/componentsData/excelData/write/dataFromOPC2.xlsx"></to>-->
         <!--</multicast>		-->
         <!--</route> -->
 

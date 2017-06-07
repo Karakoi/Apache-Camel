@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
+    <data-source source="LOCAL" name="Database on Heroku Cloud" uuid="444cc15d-0b73-45b4-8d21-4d8e38751f21">
+      <driver-ref>postgresql</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql://ec2-54-247-99-159.eu-west-1.compute.amazonaws.com:5432/dfrccd9sohrr9l</jdbc-url>
+      <driver-properties>
+        <property name="sslfactory" value="org.postgresql.ssl.NonValidatingFactory" />
+        <property name="ssl" value="true" />
+      </driver-properties>
+    </data-source>
+  </component>
+</project>
