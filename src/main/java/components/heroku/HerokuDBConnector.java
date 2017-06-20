@@ -4,6 +4,10 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 @Slf4j
 @RequiredArgsConstructor
@@ -70,61 +74,39 @@ public class HerokuDBConnector {
 
     }
 
+    public Set<List<String>> readItemsFromDevicesPurchase(String periodFrom, String periodTo) {
+        PreparedStatement ps;
+        ResultSet rs;
+        try {
+            String sql = "SELECT d.device_type, d.device_name, d.date_of_purchase, d.quantity, d.unit_price FROM devices_purchase d;";
+            ps = connect().prepareStatement(sql);
+            rs = ps.executeQuery();
+            // Количество колонок в результирующем запросе
+            int columns = rs.getMetaData().getColumnCount();
+            // Перебор строк с данными
+            Set<List<String>> devices = new HashSet<>();
+//            List<String> dataFromRS = null;
+            while (rs.next()) {
+//                for (int i = 0; i < columns; i++) {
+//                    dataFromRS.add(rs.getString(i));
+//                }
+                List<String> dataFromRS = new ArrayList<>();
+                dataFromRS.add(rs.getString("device_type"));
+                dataFromRS.add(rs.getString("device_name"));
+                dataFromRS.add(rs.getString("date_of_purchase"));
+                dataFromRS.add(rs.getString("quantity"));
+                dataFromRS.add(rs.getString("unit_price"));
+                devices.add(dataFromRS);
+            }
+            System.out.println(devices);
+            return devices;
 
-//    public static void main(String[] argv) {
-//
-//        System.out.println("-------- PostgreSQL "
-//                + "JDBC Connection Testing ------------");
-//
-//        try {
-//            Class.forName("org.postgresql.Driver");
-//            System.out.println("PostgreSQL JDBC Driver Registered!");
-//        } catch (ClassNotFoundException e) {
-//            e.printStackTrace();
-//            return;
-//        }
-//
-//        Connection connection;
-//        try {
-//            connection = DriverManager.getConnection(
-//                    "jdbc:postgresql://ec2-54-247-99-159.eu-west-1.compute.amazonaws.com:5432/dfrccd9sohrr9l?ssl=true&sslfactory=org.postgresql.ssl.NonValidatingFactory",
-//                    "xcovmuduhgfobf",
-//                    "6bd88d5e0e8afdf4d428d8e868a859efcf02b6e98b101fbff356a37cb5c9ea03");
-//
-//            System.out.println("OK!");
-//
-//            new HerokuDBConnector("jdbc:postgresql://ec2-54-247-99-159.eu-west-1.compute.amazonaws.com:5432/dfrccd9sohrr9l?ssl=true&sslfactory=org.postgresql.ssl.NonValidatingFactory",
-//                    "xcovmuduhgfobf",
-//                    "6bd88d5e0e8afdf4d428d8e868a859efcf02b6e98b101fbff356a37cb5c9ea03")
-//                    .writeNewItem("Item 999", 999);
-//
-//            Statement stmt = connection.createStatement();
-//            ResultSet rs = stmt.executeQuery("SELECT id, item_name FROM erlang_data");
-//            int id;
-//            String name;
-//            while (rs.next()) {
-//                id = rs.getInt("id");
-//                name = rs.getString("item_name");
-//                System.out.println("id: " + id + " ,name: " + name);
-//            }
-//
-////            System.out.println("RESULT: " + new HerokuDBConnector("jdbc:postgresql://ec2-54-247-99-159.eu-west-1.compute.amazonaws.com:5432/dfrccd9sohrr9l?ssl=true&sslfactory=org.postgresql.ssl.NonValidatingFactory",
-////                    "xcovmuduhgfobf",
-////                    "6bd88d5e0e8afdf4d428d8e868a859efcf02b6e98b101fbff356a37cb5c9ea03")
-////                    .readItemByName("Item 4"));
-//
-//
-//        } catch (SQLException e) {
-//            System.out.println("Connection Failed! Check output console");
-//            e.printStackTrace();
-//            return;
-//        }
-//
-//        try {
-//            connection.close();
-//        } catch (SQLException e) {
-//            e.printStackTrace();
-//        }
-//    }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            disConnect();
+        }
+        return null;
+    }
 
 }

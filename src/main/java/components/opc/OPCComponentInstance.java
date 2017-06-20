@@ -4,14 +4,14 @@ import org.apache.camel.Endpoint;
 
 public class OPCComponentInstance extends TestComponent {
 
-	public OPCComponentInstance(String a) {
+    public OPCComponentInstance(String a) {
 
-	}
+    }
 
-	@Override
-	public Endpoint createEndpoint(String uri) throws Exception {
-		// TODO Auto-generated method stub
-		return super.createEndpoint(uri);
-	}
+    @Override
+    public Endpoint createEndpoint(String uri) throws Exception {
+        // TODO Auto-generated method stub
+        return super.createEndpoint(uri);
+    }
 
 }

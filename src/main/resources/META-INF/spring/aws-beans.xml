@@ -11,7 +11,7 @@
         <property name="accessKey" value="AKIAJ44J2WC5TPTQB6BQ"/>
         <property name="secretKey" value="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"/>
         <property name="bucketName" value="camelbucket"/>
-        <property name="keyName" value="OPC_Item_2-Room_temperature"/>
+        <property name="keyName" value="default"/>
         <property name="operation" value="upload"/>
     </bean>
 

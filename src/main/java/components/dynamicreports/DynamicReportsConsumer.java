@@ -1,25 +1,24 @@
-package components.erlang;
+package components.dynamicreports;
 
 import org.apache.camel.Exchange;
 import org.apache.camel.Processor;
 import org.apache.camel.impl.DefaultConsumer;
 
-public class ErlangConsumer extends DefaultConsumer {
+public class DynamicReportsConsumer extends DefaultConsumer {
 
-    private final ErlangEndpoint endpoint;
-    private Erlang erlang;
+    private final DynamicReportsEndpoint endpoint;
+    private DynamicReports dynamicReports;
 
-    public ErlangConsumer(ErlangEndpoint endpoint, Processor processor) {
+    public DynamicReportsConsumer(DynamicReportsEndpoint endpoint, Processor processor) {
         super(endpoint, processor);
         this.endpoint = endpoint;
-        erlang = new Erlang(endpoint.getNode(), endpoint.getCookie());
+        dynamicReports = new DynamicReports();
     }
 
     @Override
     protected void doStart() throws Exception {
         super.doStart();
         Exchange exchange = endpoint.createExchange();
-        exchange.getIn().setBody(erlang.writeAndReadData(endpoint.getOperation(), endpoint.getDataForCalculation()));
         getProcessor().process(exchange);
     }
 

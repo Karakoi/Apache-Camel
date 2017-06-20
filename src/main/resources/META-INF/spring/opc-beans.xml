@@ -1,88 +1,88 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-	<!--==================== opcTest ================================ -->
-	<bean id="opcTest" class="components.opc.TestComponent" scope="prototype">
-	</bean>
-	
-	<!--==================== components.opc ================================ -->
-	
-			
-	<!--==================== opcSingleItem 1 ================================ -->
-	<bean id="opcSingleItem" class="components.opc.OPCComponent" scope="prototype">
-		<constructor-arg ref="opcEndpointSingleItem"/>
-	</bean>
-	
-	<bean id="opcEndpointSingleItem" class="components.opc.OPCEndpoint" scope="prototype">
-	<!--  	<property name="producer" ref="opcWriteProducerSingleItem"></property> -->
-	<!--      <property name="consumer" ref="opcReadConsumerSingleItem"></property> -->
-		<property name="typeOfProd" value="single"/>
-		<property name="hostName" value="localhost"/>
-		<property name="userName" value="OPCUser2"/>
-		<property name="userPassword" value="OPCUser2"/>
-		<property name="clsid" value="F8582CF2-88FB-11D0-B850-00C0F0104305"/>
-	</bean>
-<!--  		
-	<bean id="opcWriteProducerSingleItem" class="OPCWriteProducerSingleItem" scope="prototype">
-		<constructor-arg ref="opcEndpointSingleItem"></constructor-arg>
-	</bean>
-	
-	<bean id="opcReadConsumerSingleItem" class="OPCReadConsumerSingleItem" scope="prototype">
-		<constructor-arg ref="opcEndpointSingleItem"></constructor-arg>
-		<constructor-arg ref="fakeProcessor"></constructor-arg>
-	</bean>	
-		-->
-	     
-     <!--==================== opcSingleItem 2 ================================ -->	
-	<bean id="opcSingleItem2" class="components.opc.OPCComponent" scope="prototype">
-		<constructor-arg ref="opcEndpointSingleItem2"/>
-	</bean>
+    <!--==================== opcTest ================================ -->
+    <bean id="opcTest" class="components.opc.TestComponent" scope="prototype">
+    </bean>
 
-	<bean id="opcEndpointSingleItem2" class="components.opc.OPCEndpoint" scope="prototype">
-	<!--  	<property name="producer" ref="opcWriteProducerSingleItem2"></property> -->
-	<!--  	<property name="consumer" ref="opcReadConsumerSingleItem2"></property> -->
-		<property name="typeOfProd" value="single"/>
-		<property name="hostName" value="localhost"/>
-		<property name="userName" value="OPCUser2"/>
-		<property name="userPassword" value="OPCUser2"/>
-		<property name="clsid" value="F8582CF2-88FB-11D0-B850-00C0F0104305"/>
-	</bean>
-<!--  
-	<bean id="opcWriteProducerSingleItem2" class="OPCWriteProducerSingleItem" scope="prototype">
-		<constructor-arg ref="opcEndpointSingleItem2"></constructor-arg>
-	</bean>
-	
-	<bean id="opcReadConsumerSingleItem2" class="OPCReadConsumerSingleItem" scope="prototype">
-		<constructor-arg ref="opcEndpointSingleItem2"></constructor-arg>
-		<constructor-arg ref="fakeProcessor"></constructor-arg>
-	</bean>	
-		-->	
-	
-	<!--======================== opcFewItems ============================ -->
-	<!--================================================================= -->
-	<bean id="opcFewItems" class="components.opc.OPCComponent" scope="prototype">
-		<constructor-arg ref="opcEndpointFewItems"/>
-	</bean>
+    <!--==================== components.opc ================================ -->
 
-	<bean id="opcEndpointFewItems" class="components.opc.OPCEndpoint" >
-	<!--  	<property name="producer" ref="opcWriteProducerFewItems"></property> -->
-		<property name="hostName" value="localhost"/>
-		<property name="userName" value="OPCUser2"/>
-		<property name="userPassword" value="OPCUser2"/>
-		<property name="clsid" value="F8582CF2-88FB-11D0-B850-00C0F0104305"/>
-	</bean>
-<!--  
-	<bean id="opcWriteProducerFewItems" class="OPCWriteProducerFewItems">
-		<constructor-arg ref="opcEndpointFewItems"></constructor-arg>
-	</bean>
--->
-	<bean id="opcReadParserProcessor" class="processors.OPCReadParserProcessor"/>
-	<bean id="toJsonProcessor" class="processors.ToJsonProcessor"/>
-	<bean id="getLastElemProcessor" class="processors.GetLastElemFromListProcessor"/>
-	<bean id="fakeProcessor" class="processors.FakeProcessor"/>
-	
-	<!--====================================================-->
+
+    <!--==================== opcSingleItem 1 ================================ -->
+    <bean id="opcSingleItem" class="components.opc.OPCComponent" scope="prototype">
+        <constructor-arg ref="opcEndpointSingleItem"/>
+    </bean>
+
+    <bean id="opcEndpointSingleItem" class="components.opc.OPCEndpoint" scope="prototype">
+        <!--  	<property name="producer" ref="opcWriteProducerSingleItem"></property> -->
+        <!--      <property name="consumer" ref="opcReadConsumerSingleItem"></property> -->
+        <property name="typeOfProd" value="single"/>
+        <property name="hostName" value="localhost"/>
+        <property name="userName" value="OPCUser2"/>
+        <property name="userPassword" value="OPCUser2"/>
+        <property name="clsid" value="F8582CF2-88FB-11D0-B850-00C0F0104305"/>
+    </bean>
+    <!--
+        <bean id="opcWriteProducerSingleItem" class="OPCWriteProducerSingleItem" scope="prototype">
+            <constructor-arg ref="opcEndpointSingleItem"></constructor-arg>
+        </bean>
+
+        <bean id="opcReadConsumerSingleItem" class="OPCReadConsumerSingleItem" scope="prototype">
+            <constructor-arg ref="opcEndpointSingleItem"></constructor-arg>
+            <constructor-arg ref="fakeProcessor"></constructor-arg>
+        </bean>
+            -->
+
+    <!--==================== opcSingleItem 2 ================================ -->
+    <bean id="opcSingleItem2" class="components.opc.OPCComponent" scope="prototype">
+        <constructor-arg ref="opcEndpointSingleItem2"/>
+    </bean>
+
+    <bean id="opcEndpointSingleItem2" class="components.opc.OPCEndpoint" scope="prototype">
+        <!--  	<property name="producer" ref="opcWriteProducerSingleItem2"></property> -->
+        <!--  	<property name="consumer" ref="opcReadConsumerSingleItem2"></property> -->
+        <property name="typeOfProd" value="single"/>
+        <property name="hostName" value="localhost"/>
+        <property name="userName" value="OPCUser2"/>
+        <property name="userPassword" value="OPCUser2"/>
+        <property name="clsid" value="F8582CF2-88FB-11D0-B850-00C0F0104305"/>
+    </bean>
+    <!--
+        <bean id="opcWriteProducerSingleItem2" class="OPCWriteProducerSingleItem" scope="prototype">
+            <constructor-arg ref="opcEndpointSingleItem2"></constructor-arg>
+        </bean>
+
+        <bean id="opcReadConsumerSingleItem2" class="OPCReadConsumerSingleItem" scope="prototype">
+            <constructor-arg ref="opcEndpointSingleItem2"></constructor-arg>
+            <constructor-arg ref="fakeProcessor"></constructor-arg>
+        </bean>
+            -->
+
+    <!--======================== opcFewItems ============================ -->
+    <!--================================================================= -->
+    <bean id="opcFewItems" class="components.opc.OPCComponent" scope="prototype">
+        <constructor-arg ref="opcEndpointFewItems"/>
+    </bean>
+
+    <bean id="opcEndpointFewItems" class="components.opc.OPCEndpoint">
+        <!--  	<property name="producer" ref="opcWriteProducerFewItems"></property> -->
+        <property name="hostName" value="localhost"/>
+        <property name="userName" value="OPCUser2"/>
+        <property name="userPassword" value="OPCUser2"/>
+        <property name="clsid" value="F8582CF2-88FB-11D0-B850-00C0F0104305"/>
+    </bean>
+    <!--
+        <bean id="opcWriteProducerFewItems" class="OPCWriteProducerFewItems">
+            <constructor-arg ref="opcEndpointFewItems"></constructor-arg>
+        </bean>
+    -->
+    <bean id="opcReadParserProcessor" class="processors.OPCReadParserProcessor"/>
+    <bean id="toJsonProcessor" class="processors.ToJsonProcessor"/>
+    <bean id="getLastElemProcessor" class="processors.GetLastElemFromListProcessor"/>
+    <bean id="fakeProcessor" class="processors.FakeProcessor"/>
+
+    <!--====================================================-->
 
 </beans>

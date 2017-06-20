@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-	<bean id="erlang" class="components.erlang.ErlangComponent" scope="prototype">
-		<constructor-arg ref="erlangEndpoint"/>
-	</bean>
+    <bean id="erlang" class="components.erlang.ErlangComponent" scope="prototype">
+        <constructor-arg ref="erlangEndpoint"/>
+    </bean>
 
-	<bean id="erlangEndpoint" class="components.erlang.ErlangEndpoint" scope="prototype">
-		<property name="node" value="enode"/>
-		<property name="cookie" value="erlang"/>
-		<property name="operation" value="sqrt"/>
-		<property name="dataForCalculation" value="5"/>
-	</bean>
+    <bean id="erlangEndpoint" class="components.erlang.ErlangEndpoint" scope="prototype">
+        <property name="node" value="enode"/>
+        <property name="cookie" value="erlang"/>
+        <property name="operation" value="sqrt"/>
+        <property name="dataForCalculation" value="5"/>
+    </bean>
 
 </beans>

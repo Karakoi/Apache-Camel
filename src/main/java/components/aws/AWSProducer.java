@@ -25,7 +25,6 @@ public class AWSProducer extends DefaultProducer {
 
     @Override
     public void process(Exchange exchange) throws Exception {
-        log.error("Exchange:====================== {}", exchange.getIn().getBody(File.class).getClass());
         File file = exchange.getIn().getBody(File.class);
         aws.executeUpdate(endpoint.getOperation(), file);
     }

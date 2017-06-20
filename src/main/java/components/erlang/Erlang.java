@@ -13,10 +13,6 @@ public class Erlang {
     private final String peer;
     private final String cookie;
 
-//    public static void main(String[] args) {
-//        new ErlConnection("enode", "erlang");
-//    }
-
     public Erlang(String _peer, String _cookie) {
         peer = _peer;
         cookie = _cookie;
@@ -99,7 +95,6 @@ public class Erlang {
 //        System.out.println("Object " + obj);
         return response;
     }
-
 
 
     public String writeAndReadData(String operationName, String data) throws IOException {

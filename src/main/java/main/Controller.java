@@ -11,6 +11,10 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+/**
+ * Use this class, ff you want to use JavaFX.
+ * By default it's not usages.
+ */
 public class Controller implements Initializable {
 
     @FXML

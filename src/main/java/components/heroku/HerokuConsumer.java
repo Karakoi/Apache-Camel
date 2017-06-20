@@ -19,7 +19,8 @@ public class HerokuConsumer extends DefaultConsumer {
     protected void doStart() throws Exception {
         super.doStart();
         Exchange exchange = endpoint.createExchange();
-        exchange.getIn().setBody(herokuDBConnector.readItemByName(endpoint.getItemName()));
+//        exchange.getIn().setBody(herokuDBConnector.readItemByName(endpoint.getItemName()));
+        exchange.getIn().setBody(herokuDBConnector.readItemsFromDevicesPurchase("", ""));
         getProcessor().process(exchange);
     }
 

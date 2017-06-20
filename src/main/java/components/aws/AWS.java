@@ -6,7 +6,6 @@ import com.amazonaws.auth.AWSCredentials;
 import com.amazonaws.auth.BasicAWSCredentials;
 import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.AmazonS3Client;
-import com.amazonaws.services.s3.S3ResponseMetadata;
 import com.amazonaws.services.s3.model.*;
 import exceptions.IncorrectOperationException;
 import lombok.Setter;
@@ -35,13 +34,6 @@ public class AWS {
         this.accessKey = accessKey;
         this.secretKey = secretKey;
     }
-
-//    public static void main(String[] args) throws IOException {
-//        AWSCredentials credentials = new BasicAWSCredentials("AKIAJ44J2WC5TPTQB6BQ", "noglhGwjWvC51ZPeCqFoyjyXzSDSM01CY5cUyYKZ");
-//        uploadFile(credentials);
-//        readFile(credentials);
-//        deleteFile(credentials);
-//    }
 
     @PostConstruct
     public void initCredentials() {

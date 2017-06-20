@@ -1,41 +1,27 @@
-package components.erlang;
+package components.dynamicreports;
 
+import components.erlang.ErlangComponent;
 import lombok.Getter;
 import lombok.Setter;
 import org.apache.camel.Consumer;
 import org.apache.camel.Processor;
 import org.apache.camel.Producer;
 import org.apache.camel.impl.DefaultEndpoint;
-import org.apache.camel.spi.UriParam;
 
 @Getter
 @Setter
-public class ErlangEndpoint extends DefaultEndpoint {
+public class DynamicReportsEndpoint extends DefaultEndpoint {
 
-    @UriParam
-    private String node;
 
-    @UriParam
-    private String cookie;
-
-    @UriParam
-    private String operation;
-
-    @UriParam
-    private String dataForCalculation;
-
-    @UriParam
-    private String module;
-
-    public ErlangEndpoint() {
+    public DynamicReportsEndpoint() {
         super();
     }
 
-    public ErlangEndpoint(String uri, ErlangComponent component) {
+    public DynamicReportsEndpoint(String uri, ErlangComponent component) {
         super(uri, component);
     }
 
-    public ErlangEndpoint(String endpointUri) {
+    public DynamicReportsEndpoint(String endpointUri) {
         super(endpointUri);
     }
 
@@ -46,12 +32,12 @@ public class ErlangEndpoint extends DefaultEndpoint {
 
     @Override
     public Producer createProducer() throws Exception {
-        return new ErlangProducer(this);
+        return new DynamicReportsProducer(this);
     }
 
     @Override
     public Consumer createConsumer(Processor processor) throws Exception {
-        return new ErlangConsumer(this, processor);
+        return new DynamicReportsConsumer(this, processor);
     }
 
     @Override
